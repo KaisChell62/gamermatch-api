@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: gamermatch-backend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        fromDatabase:
+          name: gamermatch-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        value: https://gamermatch-frontend.onrender.com
+    healthCheckPath: /api/health
+    autoDeploy: true
+    branch: main
+
+databases:
+  - name: gamermatch-db
+    plan: free
+    databaseName: gamermatch
+    user: gamermatch_user
