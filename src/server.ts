@@ -9,6 +9,7 @@ import path from 'path';
 import fs from 'fs';
 import messageRoutes from './routes/messages';
 import authRoutes from './routes/auth.routes';
+import friendRoutes from './routes/friends.routes';
 import { auth } from './middleware/auth';
 
 dotenv.config();
@@ -109,6 +110,7 @@ app.get('/api/health', (req, res) => {
 // Routes
 app.use('/api/messages', messageRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/friends', friendRoutes);
 
 // Route d'upload de fichiers
 app.post('/api/upload', auth, upload.single('file'), (req, res) => {
