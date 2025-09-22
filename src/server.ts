@@ -8,6 +8,7 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 import messageRoutes from './routes/messages';
+import authRoutes from './routes/auth.routes';
 import { auth } from './middleware/auth';
 
 dotenv.config();
@@ -107,6 +108,7 @@ app.get('/api/health', (req, res) => {
 
 // Routes
 app.use('/api/messages', messageRoutes);
+app.use('/api/auth', authRoutes);
 
 // Route d'upload de fichiers
 app.post('/api/upload', auth, upload.single('file'), (req, res) => {
