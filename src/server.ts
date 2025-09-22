@@ -16,8 +16,29 @@ const app = express();
 const httpServer = createServer(app);
 
 // Configuration CORS pour production
+const allowedOrigins = [
+  'http://localhost:5173', // Vite dev
+  'http://localhost:3000', // HTTP server
+  'http://localhost:3001', // Alternative port
+  'https://gamermatch-desktop.netlify.app', // Si vous déployez le frontend
+];
+
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+  origin: (origin, callback) => {
+    // Autoriser les requêtes sans origine (mobile apps, Postman, etc.)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    
+    // Vérifier si c'est une origine de développement local
+    if (origin && origin.startsWith('http://localhost:')) {
+      return callback(null, true);
+    }
+    
+    return callback(new Error('Not allowed by CORS'));
+  },
   methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
 };
