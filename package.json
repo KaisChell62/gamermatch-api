@@ -20,7 +20,15 @@
     "npm": ">=8.0.0"
   },
   "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/jsonwebtoken": "^9.0.1",
+    "@types/mongoose": "^5.11.97",
     "@types/multer": "^1.4.12",
+    "@types/node": "^18.15.11",
+    "@types/peerjs": "^0.0.30",
     "@types/socket.io": "^3.0.2",
     "@types/ws": "^8.18.1",
     "bcrypt": "^5.1.1",
@@ -37,14 +45,6 @@
     "ws": "^8.18.2"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.2",
-    "@types/bcryptjs": "^2.4.2",
-    "@types/cors": "^2.8.13",
-    "@types/express": "^4.17.17",
-    "@types/jsonwebtoken": "^9.0.1",
-    "@types/mongoose": "^5.11.97",
-    "@types/node": "^18.15.11",
-    "@types/peerjs": "^0.0.30",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.3"
   }
